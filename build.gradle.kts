@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     `java`
     `maven-publish`
@@ -20,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.20.2-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT")
     compileOnly("net.kyori:adventure-api:4.14.0")
     compileOnly("net.kyori:adventure-platform-bukkit:4.1.0")
     implementation("org.xerial:sqlite-jdbc:3.42.0.0")
