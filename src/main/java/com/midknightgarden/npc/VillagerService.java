@@ -44,7 +44,6 @@ public class VillagerService {
         v.setInvulnerable(invulnerable);
         v.setAI(!noAI);
         v.setSilent(silent);
-        v.setInvisible(true);
         v.setCustomName(displayName);
         v.setCustomNameVisible(true);
 
