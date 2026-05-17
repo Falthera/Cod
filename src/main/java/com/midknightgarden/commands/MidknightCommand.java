@@ -56,6 +56,14 @@ public class MidknightCommand implements CommandExecutor, TabCompleter {
                 services.storage.initialize();
                 sender.sendMessage("MidknightGarden configs reloaded.");
                 return true;
+            case "verify":
+                if (args.length < 2) {
+                    sender.sendMessage("Usage: /midknight verify <player>");
+                    return true;
+                }
+                // Delegate to the admin verify command for convenience
+                services.getPlugin().getServer().dispatchCommand(sender, "midknight-verify " + args[1]);
+                return true;
             case "givebook":
                 if (args.length < 2) {
                     sender.sendMessage("Usage: /midknight givebook <player>");
