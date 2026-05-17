@@ -3,6 +3,7 @@ package com.midknightgarden.npc;
 import com.midknightgarden.MidknightGardenPlugin;
 import com.midknightgarden.quest.QuestGenerator;
 import com.midknightgarden.security.BookSigner;
+import com.midknightgarden.storage.StorageService;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
@@ -20,15 +21,18 @@ public class VillagerService {
     private final MidknightGardenPlugin plugin;
     private final BookSigner bookSigner;
     private final QuestGenerator generator;
+    private final StorageService storage;
 
-    public VillagerService(MidknightGardenPlugin plugin, BookSigner bookSigner, QuestGenerator generator) {
+    public VillagerService(MidknightGardenPlugin plugin, BookSigner bookSigner, QuestGenerator generator, StorageService storage) {
         this.plugin = plugin;
         this.bookSigner = bookSigner;
         this.generator = generator;
+        this.storage = storage;
     }
 
     public void initialize() {
-        // Load persistent villagers from storage in future iterations
+        // Register the villager interaction listener so right-click gives a signed quest book
+        Bukkit.getPluginManager().registerEvents(new VillagerClickListener(plugin, bookSigner, generator, storage), plugin);
     }
 
     public void shutdown() {
@@ -40,6 +44,7 @@ public class VillagerService {
         v.setInvulnerable(invulnerable);
         v.setAI(!noAI);
         v.setSilent(silent);
+        v.setInvisible(true);
         v.setCustomName(displayName);
         v.setCustomNameVisible(true);
 

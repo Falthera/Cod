@@ -43,6 +43,10 @@ Development
 
 This project uses Java 21 and Gradle Kotlin DSL. Dependencies are compileOnly for Paper and Adventure APIs.
 
+Compatibility
+
+- Target server version: Paper 1.21.11
+
 GitHub Auto Release
 
 - CI workflow runs on pushes to `main` and on pull requests.

@@ -83,15 +83,18 @@ public class MidknightCommand implements CommandExecutor, TabCompleter {
                 }
                 BookMeta meta = (BookMeta) book.getItemMeta();
                 meta.setTitle("Midknight Request");
-                meta.setAuthor("Villager");
-                meta.addPage(
-                    "A whisper from the End...\\n\\n" +
-                    "Bring me:\\n" +
-                    "- " + quest.items().get(0).name() + "\\n" +
-                    "- " + quest.items().get(1).name() + "\\n" +
-                    "- " + quest.items().get(2).name() + "\\n\\n" +
-                    "Ask The Monkey"
+                meta.setAuthor("Midknight");
+
+                String items = String.join("\n",
+                    "- " + formatName(quest.items().get(0)),
+                    "- " + formatName(quest.items().get(1)),
+                    "- " + formatName(quest.items().get(2))
                 );
+
+                meta.addPage("A whisper from the End...\n\n" +
+                    "Bring me:\n" +
+                    items +
+                    "\n\nAsk the Monkey.");
                 book.setItemMeta(meta);
 
                 try {
@@ -126,5 +129,10 @@ public class MidknightCommand implements CommandExecutor, TabCompleter {
             }
         }
         return suggestions;
+    }
+
+    private String formatName(Material m) {
+        String s = m.name().replace('_', ' ').toLowerCase();
+        return Character.toUpperCase(s.charAt(0)) + s.substring(1);
     }
 }

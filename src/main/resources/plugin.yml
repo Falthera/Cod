@@ -1,7 +1,7 @@
 name: MidknightGarden
 main: com.midknightgarden.MidknightGardenPlugin
 version: 1.0.0
-api-version: 1.16
+api-version: '1.21'
 description: "MidknightGarden premium event plugin"
 author: Midknight
 softdepend: [Citizens, DecentHolograms]

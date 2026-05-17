@@ -34,7 +34,7 @@ public class ServiceManager {
         this.bookSigner = new BookSigner(plugin);
         this.questGenerator = new QuestGenerator(plugin);
         this.storage = new SQLiteStorage(plugin, ioExecutor);
-        this.villagerService = new VillagerService(plugin, bookSigner, questGenerator);
+        this.villagerService = new VillagerService(plugin, bookSigner, questGenerator, this.storage);
         this.bountyService = new BountyService(plugin, storage);
     }
 
