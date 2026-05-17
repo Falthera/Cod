@@ -2,7 +2,6 @@ package com.midknightgarden.commands;
 
 import com.midknightgarden.services.ServiceManager;
 import com.midknightgarden.quest.Quest;
-import com.midknightgarden.security.BookSigner;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -11,8 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
-
-import java.util.UUID;
 
 /**
  * Admin verification command to validate and complete quests.
@@ -53,8 +50,8 @@ public class VerifyCommand implements CommandExecutor {
             return true;
         }
 
-        BookMeta meta = (BookMeta) found.getItemMeta();
-        java.util.Optional<java.util.UUID> maybeId = services.bookSigner.extractQuestId(found);
+        final ItemStack questBook = found;
+        java.util.Optional<java.util.UUID> maybeId = services.bookSigner.extractQuestId(questBook);
         if (maybeId.isEmpty()) {
             sender.sendMessage("Book appears invalid or unsigned.");
             return true;
@@ -69,7 +66,7 @@ public class VerifyCommand implements CommandExecutor {
             }
             Quest quest = maybeQuest.get();
             // verify signature
-            boolean ok = services.bookSigner.verifyBook(found, quest);
+            boolean ok = services.bookSigner.verifyBook(questBook, quest);
             if (!ok) {
                 sender.sendMessage("Book signature invalid. Possible forgery.");
                 return;
