@@ -1,0 +1,25 @@
+name: MidknightGarden
+main: com.midknightgarden.MidknightGardenPlugin
+version: 1.0.0
+api-version: 1.16
+description: "MidknightGarden premium event plugin"
+author: Midknight
+softdepend: [Citizens, DecentHolograms]
+
+commands:
+  midknight:
+    description: Core admin/player commands
+    usage: /midknight <help|spawnvillager|reload|givebook>
+    permission: midknight.use
+  midknight-verify:
+    description: Verify a player's quest book and start bounty
+    usage: /midknight-verify <player>
+    permission: midknight.verify
+
+permissions:
+  midknight.use:
+    description: Use basic Midknight commands
+    default: op
+  midknight.verify:
+    description: Verify quests and start events
+    default: op

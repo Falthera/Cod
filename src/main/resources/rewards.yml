@@ -1,0 +1,5 @@
+# Define commands or items to give when bounty is won
+rewards:
+  victory:
+    - "give %player% diamond 5"
+    - "broadcast %player% has won the Midknight bounty!"
