@@ -53,3 +53,4 @@ GitHub Auto Release
 - Release workflow runs automatically when a tag starting with `v` is pushed (example: `v1.0.0`).
 - Release workflow can also be run manually from GitHub Actions with a `version` input.
 - Release artifacts: plugin JAR files from `build/libs` are attached to the GitHub Release.
+\n[ci] trigger auto-tag: 2026-05-17T13:58:21.9860234+10:00
